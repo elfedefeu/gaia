@@ -427,7 +427,7 @@ var TimePicker = {
 
   initTimePicker: function tp_initTimePicker() {
     var localeTimeFormat = navigator.mozL10n.get('dateTimeFormat_%X');
-    var is12hFormat = (localeTimeFormat.indexOf('%p') >= 0);
+    var is12hFormat = false;
     this.timePicker.is12hFormat = is12hFormat;
     this.setTimePickerStyle();
     var startHour = is12hFormat ? 1 : 0;
@@ -482,6 +482,7 @@ var TimePicker = {
     } else {
       hour = this.timePicker.hour.getSelectedIndex();
     }
+    hour = (hour < 10) ? '0' + hour : hour;
     var minute = this.timePicker.minute.getSelectedDisplayedText();
 
     return hour + ':' + minute;
